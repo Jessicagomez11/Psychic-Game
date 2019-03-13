@@ -7,7 +7,7 @@ var bingoBronsonChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"
 var wins = 0;// goes up by 1 when userGuess=bingoBronsonIsThinkingOf
 var losses = 0;//goes up by 1 each time guessLeft reaches 0.  
 var guessesLeft = 10;//starts off at 10 and goes down if the userGuess != bingoBronsonIsThinkingOf. once this gets to 0, losses needs to go up by 1.  restarts after it reaches 0.  if user guess corectly count stays the same.
-var guessedAlready;// = userGuess and would need to append future guesses
+var guessedAlready = [];// = userGuess and would need to append future guesses
 
 // grabs elements from the page
 var winsDisplayed = document.getElementById("wins-Displayed");
@@ -19,6 +19,10 @@ var guessesDisplayed = document.getElementById("guesses-Displayed");
 document.onkeyup = function (event) {
 
     var userGuess = event.key;
+
+   guessedAlready.push(userGuess);
+
+ 
     
 
     //this picks a random letter in the array
@@ -30,6 +34,7 @@ document.onkeyup = function (event) {
     if (userGuess === bingoBronsonIsThinkingOf) {
         alert("You read Bingo Bronson's mind!");
         console.log("you win! score: " + parseInt(wins+=1));
+        guessesLeft=10;
         // add one more to wins
         // wins = wins + 1;
         // wins += 1;
@@ -58,6 +63,6 @@ document.onkeyup = function (event) {
     winsDisplayed.textContent = "Wins: " + wins ;
     lossesDisplayed.textContent = "Losses: " + losses;
     remainingDisplayed.textContent = "Guesses Left: " + guessesLeft;
-    guessesDisplayed.textContent = "Your guesses so far: " + losses;
+    guessesDisplayed.textContent = "Your guesses so far: " + guessedAlready;
 
 }; 
