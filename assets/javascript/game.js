@@ -54,6 +54,7 @@ document.onkeyup = function (event) {
         alert("You loose!")
         console.log(guessesLeft = 10);
         console.log(losses+=1)
+        
     }
 
 }
